@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\Response\Http">
+        <plugin name="debug_redirect_logger" type="CodeDrop\DebugRedirect\Plugin\ResponseLogger" />
+    </type>
+
+    <type name="Magento\Framework\App\FrontController">
+        <plugin name="debug_redirect_controller" type="CodeDrop\DebugRedirect\Plugin\FrontControllerLogger" />
+    </type>
+
+    <virtualType name="CodeDropDebugRedirectLogger" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/debug_redirect.log</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="CodeDropDebugRedirectMonolog" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">debug.redirect</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">CodeDropDebugRedirectLogger</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="CodeDrop\DebugRedirect\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">debug.redirect</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">CodeDropDebugRedirectLogger</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,37 @@
+{
+  "name": "codedropcc/magento2-debug-redirect",
+  "description": "Magento 2 module for debugging redirects with admin configuration",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "MIT"
+  ],
+  "require": {
+    "php": "~7.4.0|~8.0.0|~8.1.0|~8.2.0"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "CodeDrop\\DebugRedirect\\": "src/"
+    }
+  },
+  "keywords": [
+    "magento2",
+    "debug",
+    "redirect",
+    "logging",
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Konstantin Dunaev",
+      "email": "dk@codedrop.cc"
+    }
+  ],
+  "support": {
+    "email": "contact@codedrop.cc",
+    "issues": "https://github.com/codedropcc/magento2-debug-redirect/issues"
+  }
+}

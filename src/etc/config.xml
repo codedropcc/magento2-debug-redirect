@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <debug>
+            <redirect>
+                <enabled>0</enabled>
+                <log_backtrace>1</log_backtrace>
+                <backtrace_limit>15</backtrace_limit>
+                <log_request_data>1</log_request_data>
+                <exclude_admin>1</exclude_admin>
+            </redirect>
+        </debug>
+    </default>
+</config>
