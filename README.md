@@ -16,7 +16,7 @@ A Magento 2 module for debugging redirects with comprehensive logging and admin 
 ### Via Composer
 
 ```bash
-composer require codedrop/magento2-debug-redirect
+composer require codedropcc/magento2-debug-redirect
 php bin/magento module:enable CodeDrop_DebugRedirect
 php bin/magento setup:upgrade
 php bin/magento cache:clean

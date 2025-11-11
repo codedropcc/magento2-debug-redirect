@@ -29,6 +29,11 @@ class FrontControllerLogger
         }
 
         try {
+            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 10);
+            $this->logger->debug('FRONT CONTROLLER BACKTRACE', [
+                'backtrace' => array_slice($backtrace, 2) // Пропускаем вызовы внутри этого класса
+            ]);
+
             $this->logger->debug('REQUEST STARTED', [
                 'url' => $request->getRequestUri(),
                 'method' => $request->getMethod(),
@@ -41,4 +46,5 @@ class FrontControllerLogger
 
         return [$request];
     }
+
 }

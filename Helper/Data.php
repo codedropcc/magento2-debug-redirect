@@ -11,6 +11,7 @@ class Data extends AbstractHelper
     const CONFIG_PATH_BACKTRACE_LIMIT = 'debug/redirect/backtrace_limit';
     const CONFIG_PATH_LOG_REQUEST_DATA = 'debug/redirect/log_request_data';
     const CONFIG_PATH_EXCLUDE_ADMIN = 'debug/redirect/exclude_admin';
+    const CONFIG_PATH_SANITIZE_SENSITIVE_DATA = 'debug/redirect/sanitize_sensitive_data';
 
     public function isEnabled($storeId = null)
     {
@@ -36,7 +37,7 @@ class Data extends AbstractHelper
             self::CONFIG_PATH_BACKTRACE_LIMIT,
             ScopeInterface::SCOPE_STORE,
             $storeId
-        ) ?: 15;
+        ) ?: 25;
     }
 
     public function shouldLogRequestData($storeId = null)
@@ -52,6 +53,15 @@ class Data extends AbstractHelper
     {
         return $this->scopeConfig->isSetFlag(
             self::CONFIG_PATH_EXCLUDE_ADMIN,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
+
+    public function shouldSanitizeSensitiveData($storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::CONFIG_PATH_SANITIZE_SENSITIVE_DATA,
             ScopeInterface::SCOPE_STORE,
             $storeId
         );
