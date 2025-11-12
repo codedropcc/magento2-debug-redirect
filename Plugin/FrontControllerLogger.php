@@ -29,7 +29,7 @@ class FrontControllerLogger
         }
 
         try {
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 10);
+            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $this->configHelper->getBacktraceLimit());
             $this->logger->debug('FRONT CONTROLLER BACKTRACE', [
                 'backtrace' => array_slice($backtrace, 2) // Пропускаем вызовы внутри этого класса
             ]);
