@@ -1,13 +1,19 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Main plugin for multiple interceptors -->
     <type name="Magento\Framework\App\Response\Http">
-        <plugin name="debug_redirect_logger" type="CodeDrop\DebugRedirect\Plugin\ResponseLogger" />
+        <plugin name="debug_redirect_response" type="CodeDrop\DebugRedirect\Plugin\DebugPlugin" />
     </type>
 
     <type name="Magento\Framework\App\FrontController">
-        <plugin name="debug_redirect_controller" type="CodeDrop\DebugRedirect\Plugin\FrontControllerLogger" />
+        <plugin name="debug_redirect_frontcontroller" type="CodeDrop\DebugRedirect\Plugin\DebugPlugin" />
     </type>
 
+    <type name="Magento\Framework\App\RouterInterface">
+        <plugin name="debug_redirect_router" type="CodeDrop\DebugRedirect\Plugin\DebugPlugin" />
+    </type>
+
+    <!-- Logger configuration -->
     <virtualType name="CodeDropDebugRedirectLogger" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">/var/log/debug_redirect.log</argument>
